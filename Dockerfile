@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build/ target/MyFirstDemoToDoApp-0.0.1-SNAPSHOT.jar MyFirstDemoToDoApp.jar
+COPY --from=build /target/MyFirstDemoToDoApp-0.0.1-SNAPSHOT.jar MyFirstDemoToDoApp.jar
 EXPOSE 8084
 ENTRYPOINT ["java","-jar","MyFirstDemoToDoApp.jar"]
