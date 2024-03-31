@@ -25,7 +25,7 @@ public class ToDoController {
 	@Autowired(required = true)
 	ToDoService toDoService;
 	
-	 @GetMapping("/get")
+	 @GetMapping(path="/get",produces= {"application/json"})
 	    public ResponseEntity<List<ToDo>> getAllInfo(@RequestParam(required = false) String category, @RequestParam(required = false) Long dueDate, @RequestParam(required = false) String isDueTime) {
 	        List<ToDo> toDoList;
 	        if (category == null && dueDate == null && isDueTime == null ) {
