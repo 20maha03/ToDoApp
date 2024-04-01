@@ -8,7 +8,7 @@ This project is a simple ToDo application built using Spring Boot. It allows use
 - Filter tasks: Users can filter tasks based on any field defined in the task class.
 - RESTful API: Implemented using Spring Boot to provide easy integration with front-end applications.
 - Database integration: Uses a relational database (e.g H2) to store task data.
-- 
+
 ## API Endpoints
 
 The following endpoints are available:
