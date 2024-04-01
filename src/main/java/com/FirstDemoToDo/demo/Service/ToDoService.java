@@ -20,11 +20,9 @@ public class ToDoService {
     
     public List<ToDo> getAllInfo(String category, Long dueDate, String isDueTime) {
     	if (isDueTime != null && ("overDue".equals(isDueTime) || "underDue".equals(isDueTime))) {
-    	   System.out.println("time is present");
             List<ToDo> filteredTodos = new ArrayList<>();
             Calendar calendar = Calendar.getInstance();
-            long currentTime = calendar.getTimeInMillis();
-             System.out.println("l:"+currentTime);    
+            long currentTime = calendar.getTimeInMillis();   
             for (ToDo todo : toDoDao.findAll()) {
                 if ("overDue".equals(isDueTime) && todo.getDueDate() < currentTime) {
                     filteredTodos.add(todo);
@@ -35,15 +33,12 @@ public class ToDoService {
             return filteredTodos;
         }
        else if (category == null && isDueTime == null && dueDate == null ) {
-       	System.out.println("both are null");
            return toDoDao.findAll();
        } 
        else if (category == null && dueDate != null) {
-       	System.out.println("c  are null");
            return toDoDao.findByDueDate(dueDate);
        } 
         else if (category != null && dueDate == null) {
-        	System.out.println("c not  null");
             return toDoDao.findOnlyByCategory(category);
         }
             
@@ -64,6 +59,4 @@ public class ToDoService {
         toDoDao.save(todo);
         return new ResponseEntity<>("done", HttpStatus.OK);
     }
-
-	
 }

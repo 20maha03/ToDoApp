@@ -21,6 +21,4 @@ public interface ToDoDao extends JpaRepository<ToDo, Integer> {
 	public List<ToDo> findByDueDate(Long dueDate);
 	
 	public List<ToDo> findOnlyByCategory(String category);
-	
-  
 }

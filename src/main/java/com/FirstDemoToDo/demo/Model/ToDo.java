@@ -57,5 +57,4 @@ public class ToDo {
 	public void setDueDate(long dueDate) {
 		this.dueDate = dueDate;
 	}
-     
 }

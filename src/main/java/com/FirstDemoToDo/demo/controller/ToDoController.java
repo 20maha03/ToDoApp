@@ -19,13 +19,13 @@ import com.FirstDemoToDo.demo.Model.ToDo;
 import com.FirstDemoToDo.demo.Service.ToDoService;
 
 @RestController
-@RequestMapping("/welcomeToDo")
+@RequestMapping("api/v1")
 public class ToDoController {
     
 	@Autowired(required = true)
 	ToDoService toDoService;
 	
-	 @GetMapping(path="/get",produces= {"application/json"})
+	 @GetMapping(path="/todos",produces= {"application/json"})
 	    public ResponseEntity<List<ToDo>> getAllInfo(@RequestParam(required = false) String category, @RequestParam(required = false) Long dueDate, @RequestParam(required = false) String isDueTime) {
 	        List<ToDo> toDoList;
 	        if (category == null && dueDate == null && isDueTime == null ) {
@@ -46,20 +46,18 @@ public class ToDoController {
 	        return new ResponseEntity<>(toDoList, HttpStatus.OK);
 	    }
     
-	
-	@PostMapping("/add")
+	@PostMapping("/todos")
 	public ResponseEntity<String> addNewOne(@RequestBody ToDo todo) {
 		return toDoService.addNewOne(todo);
 	}
 	
-	@DeleteMapping("delete/{id}")
+	@DeleteMapping("todos/{id}")
 	public ResponseEntity<String> getOne(@PathVariable int id) {
 		return toDoService.getOne(id);
 	}
 	
-	@PutMapping("put/{id}")
-	public ResponseEntity<String> updateOne(@RequestBody ToDo todo) {
+	@PutMapping("todos/{id}")
+	public ResponseEntity<String> updateOne(@RequestBody ToDo todo , @PathVariable int id) {
 		return toDoService.updateOne(todo);
 	}
-	
 }
